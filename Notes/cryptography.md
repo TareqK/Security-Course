@@ -1,3 +1,5 @@
+<!-- Required extensions:  mathjax -->
+
 # Cryptography 
 
 Missed lecture 8/9/2018
@@ -106,10 +108,59 @@ Ciphers Generally use 2 things to hide the plaintext.
 
 ---
 
+### Stream Ciphers
+
+Stream ciphers try to recreate the concept of a one time pad using a random-sequence generated from a key. There are 2 famous *practically used* stream ciphers :
+
+- [A5/1](https://en.wikipedia.org/wiki/A5/1) --> Stream Key XOR Plaintext = Ciphertext --> Uses hardware registers and shifting bit by bit --> less used because processecors are fast enough today.
+- [RC4](https://en.wikipedia.org/wiki/RC4) --> Self-Modifying lookup table --> uses software and bytes instead of bits.
 
 
+Stream ciphers were popular, but with faster processeors they were no longer needed, however, they still find use in systems where resources are limited and security is needed.
+
+---
+
+### Block Ciphers
 
 
+Block ciphers encrypt the data block by block individually using keys. Common block sizes are 64bit, 128bit, and 256bit blocks. 
 
+The Cipher text is obtained from plaintext by iterating a **round function**, where the input of the function is a key and the output of the last round.
+
+---
+
+#### Feistel Cipher
+
+- Genreal framework for Block Ciphers.
+- Split text into left and right halves $P=(L_0,R_0)$
+- Encryption : For each round i...n, compute :
+
+    $L_i = R_{i-1}$
+
+    $R_i = L_{i-1} \bigoplus F(R_{i-1},K_i)$    
+
+    Ciphertext = $C = (L_n,R_n)$
+
+- Decryption : For each round i=n....1
+
+    $R_{i-1} = L_i$
+
+    $L_{i-1} = R_i \bigoplus F(R_{i-1},K_i)$
+
+    Plaintext = $P = (L_0,R_0)$
+
+- Any round function works, but is only secure for certain functions.
+
+---
+
+#### DES : Data Encryption Standard
+
+- Developed based on IBMs Lucifer Cipher.
+- Used for a long time by US Government.
+- Contrevertial development due to circumstances.
+- Its a Fistel cipher with 64 bit block length and 56 bit key, with 16 rounds and 48 bits of sub-keys. Security depebds on **S-Boxes**, which maps 6bits to 4bits.
+
+
+---
 
 
