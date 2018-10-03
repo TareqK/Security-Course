@@ -163,4 +163,41 @@ The Cipher text is obtained from plaintext by iterating a **round function**, wh
 
 ---
 
+##### MISSED LECTURE 20/9
+##### MISSED LECTURE 22/9
 
+#### AES 
+
+---
+
+#### Block Cipher Modes 
+
+- Electronic Codebock --> Encrypt each block individually 
+
+    --> Bad Idea because we get the same ciphertext, however, error propagation is non-existent, can be done in parallel
+
+- Cipher Block Chaining --> Chain the blocks together
+
+    --> More secure than ECB, Error propagation is dangerous, cant be done in parallel.
+    
+- Counter Mode --> use an IV(a nonce, or Number Used Once)and a counter to encrypt each block.
+
+    --> Popular for random access, good for parallization.
+
+---
+
+## Public Key Cryptography
+
+The basic idea is we have a key-pair, one for encryption and one for decryption. This way, anybody who wants to talk to us encrypts their message with our public key, which can only be decrypted using our private key.
+
+The public-private key pair do not have to be the same length.
+
+However, it is slower than symetric encryption.
+
+We use Public Key Cryptography generally for Digital Signature and  Key exchange.
+
+### RSA 
+
+RSA stands for **R**iverst, **S**hamir, and **A**ldeman. It is an acronym of the names of the three inventors. RSA is the gold standard in public-private key encryption.
+
+---
